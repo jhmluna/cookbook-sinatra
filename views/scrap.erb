@@ -1,0 +1,20 @@
+<h1>Choose your Recipe to be imported:</h1>
+
+<form action="/scrap" method="post">
+  <table>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Rating</th>
+    </tr>
+    <% @online_recipes.each do |recipe| %>
+      <tr>
+        <td><input type="radio" id=<%= recipe[0] %> name="recipe" value=<%=recipe[2]%>></td>
+        <td><label for=<%= recipe[0] %>><%= recipe[0] %></label></td>
+        <td><%=recipe[1]%></td>
+      </tr>
+    <% end %>
+  </table>
+  <br>
+  <input type="submit" value="Save Recipe">
+</form>

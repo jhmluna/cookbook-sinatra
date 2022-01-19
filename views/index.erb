@@ -1,0 +1,31 @@
+<h1>My Cookbook</h1>
+
+<a href="/new">Create new recipe</a>
+<br>
+<a href="/import">Import new recipe</a>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Rating</th>
+    <th>Preparation time</th>
+    <th>Done?</th>
+    <th></th>
+  </tr>
+  <% @recipes.each_with_index do |recipe, index| %>
+    <tr>
+      <td><%= recipe.name %></td>
+      <td><%= recipe.description %></td>
+      <td><%= recipe.rating %></td>
+      <td><%= recipe.prep_time %></td>
+      <td><% if recipe.done? %>
+            <i class="far fa-thumbs-up"></i>
+          <% else %>
+            <a href="mark/<%= index %>"><i class="far fa-check-square"></i></i></a>
+          <% end %>
+      </td>
+      <td><a href="/destroy/<%= index %>"><i class="far fa-trash-alt"></i></a></td>
+    </tr>
+  <% end %>
+</table>
